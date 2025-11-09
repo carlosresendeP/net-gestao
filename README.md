@@ -1,4 +1,4 @@
-# 🌐 Net Gestão - Sistema de Gestão de Rede de Negócios
+# 🌐 Net Gestão - Sistema de Gestão de grupos de networking
 
 Sistema completo para gerenciamento de redes de negócios focado em conectar profissionais, gerar oportunidades comerciais e acompanhar o desempenho de membros através de indicações, reuniões e métricas de performance.
 
