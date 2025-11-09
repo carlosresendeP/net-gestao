@@ -6,7 +6,7 @@ export default function Home() {
 
     
     <div className="w-full h-screen">
-      <main className=" w-full min-h-screen  bg-gray-950 px-4 flex flex-col items-center justify-center lg:px-32 py-16">
+      <main className=" w-full min-h-screen bg-linear-to-br from-gray-950 to-gray-800 px-4 flex flex-col items-center justify-center lg:px-32 py-16">
 
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center h-full text-center ">
           <h1 className="text-6xl font-bold text-white">A plataforma Definitiva para gerir e expandir seus grupos de Network</h1>

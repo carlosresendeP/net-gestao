@@ -92,6 +92,8 @@ O **Net Gestão** é uma plataforma web desenvolvida para facilitar a gestão de
 
 ### DevOps e Ferramentas
 - **[ESLint 9](https://eslint.org/)** - Linter JavaScript/TypeScript
+- **[Vitest](https://vitest.dev/)** - Framework de testes unitários
+- **[Testing Library](https://testing-library.com/)** - Biblioteca de testes para React
 - **[Vercel](https://vercel.com/)** - Plataforma de deploy (recomendado)
 - **[MongoDB Atlas](https://www.mongodb.com/atlas)** - Banco de dados na nuvem
 
@@ -142,7 +144,7 @@ Crie um arquivo `.env` na raiz do projeto:
 
 ```env
 # Database MongoDB
-DATABASE_URL="mongodb+srv://usuario:senha@cluster.mongodb.net/net-gestao?retryWrites=true&w=majority"
+DATABASE_URL="mongodb+srv://;...."
 
 # Autenticação
 ADMIN_KEY="sua_chave_secreta_admin_aqui"
@@ -184,6 +186,27 @@ npm run dev
 ```
 
 A aplicação estará disponível em **[http://localhost:3000](http://localhost:3000)**
+
+### Rodar Testes
+
+```bash
+# Executa todos os testes uma vez
+npm test
+
+# Executa os testes em modo watch (reexecuta ao salvar)
+npm run test:watch
+
+# Abre a interface visual do Vitest
+npm run test:ui
+
+# Gera relatório de cobertura de testes
+npm run test:coverage
+```
+
+**Estrutura de Testes:**
+- `tests/api.test.ts` - Testes das rotas de API (intenções, indicações, login)
+- `tests/components.test.tsx` - Testes de componentes React (Button, SuccessCard)
+- `tests/setup.ts` - Configuração global dos testes (mocks, cleanup)
 
 ### Modo Produção (Build)
 

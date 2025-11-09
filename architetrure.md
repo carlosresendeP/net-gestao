@@ -990,7 +990,7 @@ OU → Vence sem pagar → Status: Atrasado → 30 dias → Suspende membro
 
 ```env
 # Database
-DATABASE_URL="mongodb+srv://user:pass@cluster.mongodb.net/db"
+DATABASE_URL="mongodb+srv://..."
 
 # Autenticação
 ADMIN_KEY="chave_secreta_admin"
