@@ -55,13 +55,17 @@ export const registroMembroSchema = z.object({
         .string()
         .min(6, "Senha deve ter no mínimo 6 caracteres")
         .max(50, "Senha muito longa"),
-    empresa: z.string().min(2, "Nome da empresa muito curto").max(100, "Nome da empresa muito longo").optional(),
-    cargo: z.string().max(100, "Cargo muito longo").optional(),
+    empresa: z.string().max(100, "Nome da empresa muito longo").optional().nullable().transform(val => val || null),
+    cargo: z.string().max(100, "Cargo muito longo").optional().nullable().transform(val => val || null),
     telefone: z
         .string()
-        .regex(/^\(\d{2}\) \d{4,5}-\d{4}$/, "Formato inválido. Use: (11) 98765-4321")
         .optional()
-        .or(z.literal("")),
+        .nullable()
+        .transform(val => val || null)
+        .refine(
+            (val) => !val || /^[\d\s\(\)\-]{10,15}$/.test(val),
+            { message: "Telefone inválido" }
+        ),
 });
 
 

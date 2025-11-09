@@ -258,13 +258,19 @@ function CadastroFinalContent() {
                             value={formData.cargo}
                             onChange={handleChange}
                         />
-                        <Input
-                            label="Telefone"
-                            name="telefone"
-                            type="text"
-                            value={formData.telefone}
-                            onChange={handleChange}
-                        />
+                        <div>
+                            <Input
+                                label="Telefone"
+                                name="telefone"
+                                type="text"
+                                placeholder="(11) 98765-4321"
+                                value={formData.telefone}
+                                onChange={handleChange}
+                            />
+                            <p className="text-xs text-gray-400 mt-1">
+                                Formato sugerido: (11) 98765-4321
+                            </p>
+                        </div>
 
                         <button
                             type="submit"
