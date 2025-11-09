@@ -16,8 +16,8 @@ export function Header({ onContactClick }: HeaderProps) {
 
     return (
         <header className="w-full bg-gray-950 shadow-lg p-4 flex justify-between items-center lg:px-32">
-            <h1 className="text-ls font-bold text-gray-100 dark:text-zinc-200">
-                Gestão para Grupos de Networking
+            <h1 className="text-2xl font-bold text-gray-100 dark:text-zinc-200">
+                NET Gestão - Networking
             </h1>
             <ul className="flex items-center justify-center gap-3">
                 {showBackButton && (

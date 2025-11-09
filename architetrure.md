@@ -1031,7 +1031,7 @@ O roadmap está dividido em 5 fases incrementais, permitindo entregas rápidas d
 
 ---
 
-**Autor**: Carlos
+**Autor**: Carlos Paula
 **Versão**: 2.0  
 **Data**: Novembro 2025  
 **Última Atualização**: 05/11/2025
