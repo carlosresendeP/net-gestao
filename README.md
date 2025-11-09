@@ -27,6 +27,36 @@ O **Net Gestão** é uma plataforma web desenvolvida para facilitar a gestão de
 - **Sistema de indicações**: Geração e acompanhamento de oportunidades de negócio entre membros
 - **Gestão administrativa**: Painel para aprovação de membros e controle da rede
 
+### 🔄 Fluxo de Cadastro
+
+```mermaid
+graph TD
+    A[1. Usuário acessa /cadastro] --> B[2. Preenche formulário de interesse]
+    B --> C[3. Sistema cria Intenção pendente]
+    C --> D[4. Admin acessa /admin com ADMIN_KEY]
+    D --> E[5. Admin visualiza intenções pendentes]
+    E --> F{6. Admin aprova?}
+    F -->|Sim| G[7. Sistema gera TOKEN único]
+    F -->|Não| H[Intenção recusada]
+    G --> I[8. Token enviado ao usuário]
+    I --> J[9. Usuário acessa /cadastro-final?token=XXX]
+    J --> K[10. Preenche dados completos + senha]
+    K --> L[11. Conta criada como Membro]
+    L --> M[12. Login em /login]
+    M --> N[13. Acesso à área /membros]
+    N --> O[14. Dashboard com indicações]
+```
+
+**Resumo do Fluxo:**
+1. 📝 **Manifestação de Interesse**: `/cadastro` - Formulário público (nome, email, empresa, motivo)
+2. ⏳ **Intenção Pendente**: Sistema aguarda aprovação administrativa
+3. 🔐 **Painel Admin**: `/admin` - Login com `ADMIN_KEY` (variável de ambiente)
+4. ✅ **Aprovação**: Admin aprova a intenção e sistema gera **token único**
+5. 🎟️ **Convite com Token**: Link `/cadastro-final?token=abc123def456` enviado ao candidato
+6. 📋 **Cadastro Final**: Candidato completa dados (cargo, telefone, senha)
+7. 🔓 **Login**: `/login` - Acesso com email e senha
+8. 🏠 **Área de Membros**: `/membros` - Dashboard com indicações e estatísticas
+
 ---
 
 ## ✨ Funcionalidades
@@ -54,20 +84,6 @@ O **Net Gestão** é uma plataforma web desenvolvida para facilitar a gestão de
 - ✅ Animações suaves com Framer Motion
 - ✅ Componentes reutilizáveis (Cards, Inputs, Buttons)
 - ✅ Feedback visual para ações do usuário
-
-### 🔄 Em Desenvolvimento (Fase 2)
-- 🔄 Sistema de avisos e comunicados
-- 🔄 Check-in de presenças em reuniões
-- 🔄 Agendamento de reuniões 1:1
-- 🔄 Sistema de agradecimentos públicos
-- 🔄 Notificações in-app
-
-### 📋 Planejadas (Fases 3-5)
-- 📋 Dashboards avançados com métricas
-- 📋 Relatórios por período
-- 📋 Controle financeiro (mensalidades)
-- 📋 Integração com gateway de pagamento
-- 📋 Sistema de recompensas e gamificação
 
 ---
 
@@ -186,6 +202,74 @@ npm run dev
 ```
 
 A aplicação estará disponível em **[http://localhost:3000](http://localhost:3000)**
+
+### 🚀 Primeiros Passos - Guia Rápido
+
+Após rodar o projeto, siga este caminho para testar o sistema completo:
+
+#### 1️⃣ Criar uma Intenção de Cadastro
+```
+1. Acesse: http://localhost:3000/cadastro
+2. Preencha o formulário:
+   - Nome: João Silva
+   - Email: joao@email.com
+   - Empresa: Empresa XYZ
+   - Motivo: Quero fazer networking
+3. Clique em "Enviar Manifestação"
+4. ✅ Intenção criada com status "pendente"
+```
+
+#### 2️⃣ Acessar Painel Administrativo
+```
+1. Acesse: http://localhost:3000/admin
+2. Digite a ADMIN_KEY configurada no .env
+   (exemplo: "MinhaChaveSecreta123!")
+3. Visualize a lista de intenções pendentes
+```
+
+#### 3️⃣ Aprovar Intenção e Gerar Token
+```
+1. No painel admin, localize a intenção de "João Silva"
+2. Clique em "Aprovar"
+3. ✅ Sistema gera token único automaticamente
+4. Copie o link gerado: 
+   http://localhost:3000/cadastro-final?token=abc123def456
+```
+
+#### 4️⃣ Completar Cadastro com Token
+```
+1. Acesse o link com token (ou cole no navegador)
+2. Preencha os dados adicionais:
+   - Cargo: Gerente de Vendas
+   - Telefone: (11) 98765-4321
+   - Senha: senha123
+   - Confirmar Senha: senha123
+3. Clique em "Finalizar Cadastro"
+4. ✅ Conta de membro criada!
+```
+
+#### 5️⃣ Fazer Login
+```
+1. Acesse: http://localhost:3000/login
+2. Digite as credenciais:
+   - Email: joao@email.com
+   - Senha: senha123
+3. Clique em "Entrar"
+4. ✅ Redirecionado para área de membros
+```
+
+#### 6️⃣ Acessar Dashboard de Membros
+```
+1. Você está em: http://localhost:3000/membros
+2. Visualize:
+   - Lista de todos os membros da rede
+   - Criar nova indicação para outros membros
+   - Ver indicações recebidas
+   - Ver indicações feitas
+   - Atualizar status das indicações
+```
+
+> 💡 **Dica**: Para testar indicações, crie pelo menos 2 membros seguindo os passos acima.
 
 ### Rodar Testes
 

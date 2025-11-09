@@ -1,4 +1,4 @@
-import {NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import prismaClientFactory from "@/config/prisma";
 
 //rota para buscar todos os membros cadastrados
@@ -16,6 +16,7 @@ export async function GET() {
                 empresa: true,
                 cargo: true,
                 telefone: true,
+                createdAt: true,
             },
             orderBy: { nome: "asc" },
         });
