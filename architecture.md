@@ -84,7 +84,7 @@ model Intencao {
   @@map("intencoes")
 }
 
-model Membro {
+model Member {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   nome      String
   email     String   @unique
