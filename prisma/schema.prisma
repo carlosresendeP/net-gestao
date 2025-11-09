@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Intencao {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String
+  email     String
+  empresa   String?
+  motivo    String
+  status    String    @default("pendente")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  convites  Convite[]
+}
+
+model Convite {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  token      String   @unique
+  intencao   Intencao @relation(fields: [intencaoId], references: [id])
+  intencaoId String   @db.ObjectId
+  usado      Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Indicacao {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  membroIndicadorId String   @db.ObjectId
+  membroIndicadoId  String   @db.ObjectId
+  empresaContato    String
+  descricao         String
+  status            String   @default("nova") // nova, em_contato, fechada, recusada
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  membroIndicador Member @relation("IndicacoesFeitas", fields: [membroIndicadorId], references: [id])
+  membroIndicado  Member @relation("IndicacoesRecebidas", fields: [membroIndicadoId], references: [id])
+}
+
+model Member {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String
+  email     String   @unique
+  password  String
+  empresa   String?
+  cargo     String?
+  telefone  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  indicacoesFeitas    Indicacao[] @relation("IndicacoesFeitas")
+  indicacoesRecebidas Indicacao[] @relation("IndicacoesRecebidas")
+}
