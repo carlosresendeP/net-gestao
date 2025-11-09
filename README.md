@@ -2,19 +2,21 @@
 
 Sistema completo para gerenciamento de redes de negócios focado em conectar profissionais, gerar oportunidades comerciais e acompanhar o desempenho de membros através de indicações, reuniões e métricas de performance.
 
-## 📋 Índice
+<h3>Imagens do Projeto</h3>
 
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação e Configuração](#instalação-e-configuração)
-- [Como Rodar o Projeto](#como-rodar-o-projeto)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [APIs Disponíveis](#apis-disponíveis)
-- [Variáveis de Ambiente](#variáveis-de-ambiente)
-- [Deploy](#deploy)
-- [Documentação Adicional](#documentação-adicional)
+<h4>Desktop</h4>
+<p>
+  <img src="./public/project-apresentation/image-desk-1.png" width="200" alt="Desktop View 1">
+  <img src="./public/project-apresentation/image-desk-2.png" width="200" alt="Desktop View 2">
+  <img src="./public/project-apresentation/image-desk-3.png" width="200" alt="Desktop View 3">
+  <img src="./public/project-apresentation/image-desk-4.png" width="200" alt="Desktop View 4">
+  <img src="./public/project-apresentation/image-desk-5.png" width="200" alt="Desktop View 5">
+  <img src="./public/project-apresentation/image-desk-6.png" width="200" alt="Desktop View 6">
+  <img src="./public/project-apresentation/image-desk-7.png" width="200" alt="Desktop View 7">
+  <img src="./public/project-apresentation/image-desk-8.png" width="200" alt="Desktop View 8">  
+  <img src="./public/project-apresentation/image-desk-9.png" width="200" alt="Desktop View 9">
+  <img src="./public/project-apresentation/image-desk-10.png" width="200" alt="Desktop View 10">
+</p>
 
 ---
 
