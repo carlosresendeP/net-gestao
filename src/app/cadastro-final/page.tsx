@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Input } from "../components/input";
@@ -15,7 +15,7 @@ type ValidarResponse =
     | { valid: false; reason?: string }
     | { error: string };
 
-export default function CadastroFinalPage() {
+function CadastroFinalContent() {
     const sp = useSearchParams();
     const router = useRouter();
     const token = sp.get("token");
@@ -278,5 +278,17 @@ export default function CadastroFinalPage() {
                 )}
             </motion.div>
         </div>
+    );
+}
+
+export default function CadastroFinalPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+                <div className="text-white">Carregando...</div>
+            </div>
+        }>
+            <CadastroFinalContent />
+        </Suspense>
     );
 }

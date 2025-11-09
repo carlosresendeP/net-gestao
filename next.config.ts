@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Configuração vazia para Turbopack (silencia o warning)
+  turbopack: {},
 };
 
 export default nextConfig;
