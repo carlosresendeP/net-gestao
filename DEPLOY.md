@@ -6,7 +6,7 @@ Configure as seguintes variáveis de ambiente no painel da Vercel:
 
 ```bash
 # Database
-DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/netgestao?retryWrites=true&w=majority
+DATABASE_URL=mongodb+srv://...
 
 # Admin
 ADMIN_KEY=seu_token_admin_secreto_aqui
