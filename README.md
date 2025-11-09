@@ -505,19 +505,35 @@ Atualizar status da indicação
 
 ## 🌐 Deploy
 
+### ⚠️ IMPORTANTE - Configuração do Prisma para Vercel
+
+**O projeto foi atualizado para resolver problemas de deploy na Vercel!**
+
+As seguintes correções foram implementadas:
+
+✅ **Prisma Client** agora é gerado no diretório padrão (`node_modules/@prisma/client`)  
+✅ **Build command** atualizado para: `prisma generate && next build`  
+✅ **Postinstall script** adicionado para gerar o client automaticamente  
+
 ### Deploy na Vercel (Recomendado)
 
 1. Faça push do código para o GitHub
 2. Acesse [vercel.com](https://vercel.com)
 3. Importe o repositório
 4. Configure as variáveis de ambiente:
-   - `DATABASE_URL`
-   - `ADMIN_KEY`
+   - `DATABASE_URL` - Connection string do MongoDB Atlas
+   - `ADMIN_KEY` - Token secreto para operações administrativas
+   - `NEXT_PUBLIC_BASE_URL` - URL do projeto (ex: https://netgestao.vercel.app)
 5. Deploy automático! ✨
+
+**📖 Para instruções detalhadas de deploy, veja:** [DEPLOY.md](./DEPLOY.md)
 
 ### Deploy Manual
 
 ```bash
+# Gerar Prisma Client
+npx prisma generate
+
 # Build do projeto
 npm run build
 
@@ -527,11 +543,27 @@ npm start
 
 O servidor estará rodando na porta 3000 por padrão.
 
+### Troubleshooting Vercel
+
+**Erro: "PrismaClient is unable to run in this browser environment"**
+- ✅ Resolvido! O Prisma Client agora usa o diretório padrão
+- Certifique-se de fazer um novo deploy após o push das correções
+
+**Erro: "Cannot find module '@prisma/client'"**
+- Execute: `npm install` e `npx prisma generate`
+- A Vercel executará automaticamente o `postinstall` script
+
+**Erro 500 nas API Routes**
+- Verifique os logs: Vercel Dashboard → Deployments → Functions
+- Confirme que `DATABASE_URL` está configurada corretamente
+- Verifique se o IP `0.0.0.0/0` está whitelisted no MongoDB Atlas
+
 ---
 
 ## 📚 Documentação Adicional
 
-- **[architetrure.md](./architetrure.md)** - Documentação completa da arquitetura do sistema
+- **[DEPLOY.md](./DEPLOY.md)** - Guia completo de deploy na Vercel
+- **[architecture.md](./architecture.md)** - Documentação completa da arquitetura do sistema
 - **[Next.js Docs](https://nextjs.org/docs)** - Documentação oficial do Next.js
 - **[Prisma Docs](https://www.prisma.io/docs)** - Documentação do Prisma ORM
 - **[TailwindCSS Docs](https://tailwindcss.com/docs)** - Documentação do TailwindCSS
@@ -545,11 +577,14 @@ O servidor estará rodando na porta 3000 por padrão.
 npm run dev          # Inicia servidor de desenvolvimento
 
 # Produção
-npm run build        # Gera build de produção
+npm run build        # Gera Prisma Client + build de produção
 npm start            # Inicia servidor de produção
 
 # Qualidade de Código
 npm run lint         # Executa ESLint
+npm test             # Executa testes (21 testes ✅)
+npm run test:watch   # Executa testes em modo watch
+npm run test:coverage # Gera relatório de cobertura
 
 # Prisma
 npx prisma generate  # Gera Prisma Client
