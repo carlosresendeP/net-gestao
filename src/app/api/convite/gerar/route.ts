@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     console.log("✅ Convite criado:", convite);
 
     // Gerar URL completa
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://net-gestao.vercel.app';
     const url = `${baseUrl}/cadastro-final?token=${token}&id=${intencaoId}`;
 
     return NextResponse.json({
